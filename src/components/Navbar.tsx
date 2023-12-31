@@ -1,15 +1,27 @@
 import { Link, Routes, Route } from 'react-router-dom';
 import GetById from './GetByUserId';
 import PostRecord from './PostUserRecord';
+import './Navbar.css';
 
 function Nav(): JSX.Element {
   return (
     <>
-      <div>
-        <Link data-testid="GetById" to="/GetById">
+      <div
+        data-testid="NavbarDiv"
+        className="d-flex flex-row justify-content-end bg-dark"
+      >
+        <Link
+          data-testid="GetById"
+          to="/GetById"
+          className="me-3 px-2 py-2 text-decoration-none text-light"
+        >
           GetById
         </Link>
-        <Link data-testid="PostRecord" to="/PostRecord">
+        <Link
+          data-testid="PostRecord"
+          to="/PostRecord"
+          className="me-3 px-2 py-2 text-decoration-none text-light"
+        >
           PostRecord
         </Link>
       </div>
