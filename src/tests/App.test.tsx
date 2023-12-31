@@ -10,7 +10,9 @@ it('Should be on the dom', () => {
     </BrowserRouter>
   );
 
-  const navbarComponent = screen.getByRole('main');
+  const navbarComponent = screen.getByRole('navigation');
+  const welcomePageComponent = screen.getByRole('main');
 
   expect(navbarComponent).toBeInTheDocument();
+  expect(welcomePageComponent).toBeInTheDocument();
 });

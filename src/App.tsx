@@ -1,11 +1,19 @@
+import { Route, Routes } from 'react-router-dom';
 import Nav from './components/Navbar.tsx';
+import WelcomePage from './components/WelcomePage.tsx';
 
 function App() {
   return (
-    <div data-testid="AppDiv" role="main">
-      <Nav />
-      <h1 role='heading' aria-level={1}>Welcome!</h1>
-    </div>
+    <>
+      <div role="navigation">
+        <Nav />
+      </div>
+      <div role="main">
+        <Routes>
+          <Route path="/" element={<WelcomePage />}></Route>
+        </Routes>
+      </div>
+    </>
   );
 }
 
