@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import Nav from './components/Navbar.tsx';
-import WelcomePage from './components/WelcomePage.tsx';
+import Nav from './Navbar.tsx';
+import WelcomePage from './WelcomePage.tsx';
 
 function App() {
   return (
