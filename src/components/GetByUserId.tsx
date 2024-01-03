@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import IdProcessor from '../GetByUserIdProcessor';
+import { useState } from "react";
+import IdProcessor from "../GetByUserIdProcessor";
 
 function GetById(): JSX.Element {
-  const [id, setId] = useState('');
-  const [result, setResult] = useState('');
+  const [id, setId] = useState("");
+  const [result, setResult] = useState("");
 
   function handleSubmit(event: any) {
     event.preventDefault();

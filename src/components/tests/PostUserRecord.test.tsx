@@ -1,6 +1,7 @@
 import PostRecord from '../PostUserRecord.tsx';
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import PostRecordProcessor from '../../PostUserRecordProcessor.ts';
 
 it('Should be on the dom', () => {
   render(<PostRecord />);
@@ -29,4 +30,18 @@ it('Should be on the dom', () => {
   expect(postRecordButtonElement).toBeInTheDocument();
   expect(postRecordButtonElement).toHaveTextContent("Submit");
   expect(postRecordButtonElement).toHaveClass("btn btn-primary");
+});
+
+it('Submit button clicked', () => {
+  const processPostRecordMock = jest.spyOn(PostRecordProcessor, 'Process');
+  processPostRecordMock.mockImplementation(() => "Successfully saved!");
+
+  render(<PostRecord />);
+
+  fireEvent.click(screen.getByTestId('PostRecordButton'));
+
+  const postRecordResponseElement = screen.getByTestId('PostRecordResponse');
+  expect(postRecordResponseElement).toBeInTheDocument();
+
+  expect(postRecordResponseElement).toHaveTextContent('Successfully saved!');
 });
