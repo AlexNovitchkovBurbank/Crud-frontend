@@ -1,8 +1,8 @@
-import GetById from '../GetByUserId.tsx';
+import GetById from '../../components/GetByUserId.tsx';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {jest} from '@jest/globals'
-import IdProcessor from '../../GetByUserIdProcessor.ts';
+import GetByUserIdProcessor from '../../Processors/GetByUserIdProcessor.ts';
 
 it('Should be on the dom', () => {
   render(<GetById />);
@@ -42,7 +42,7 @@ it('Should be on the dom', () => {
 });
 
 it('Submit button clicked', () => {
-  const processIdMock = jest.spyOn(IdProcessor, 'ProcessId');
+  const processIdMock = jest.spyOn(GetByUserIdProcessor, 'Process');
   processIdMock.mockImplementation(() => "1");
   render(<GetById />);
 

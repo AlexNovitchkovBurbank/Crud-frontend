@@ -1,4 +1,4 @@
-import Nav from '../Navbar.tsx';
+import Nav from '../../components/Navbar.tsx';
 import { render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter } from 'react-router-dom';

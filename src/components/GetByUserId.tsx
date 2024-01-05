@@ -1,5 +1,5 @@
 import { useState } from "react";
-import IdProcessor from "../GetByUserIdProcessor";
+import GetByUserIdProcessor from "../Processors/GetByUserIdProcessor";
 
 function GetById(): JSX.Element {
   const [id, setId] = useState("");
@@ -8,7 +8,7 @@ function GetById(): JSX.Element {
   function handleSubmit(event: any) {
     event.preventDefault();
 
-    setResult(IdProcessor.ProcessId(id));
+    setResult(GetByUserIdProcessor.Process(id));
   }
 
   const handleChange = (event: any) => {

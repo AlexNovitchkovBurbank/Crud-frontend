@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from '../App.tsx';
+import App from '../../components/App.tsx';
 import { BrowserRouter } from 'react-router-dom';
 
 it('Should be on the dom', () => {

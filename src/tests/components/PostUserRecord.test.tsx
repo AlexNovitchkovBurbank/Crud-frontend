@@ -1,7 +1,7 @@
-import PostRecord from '../PostUserRecord.tsx';
+import PostRecord from '../../components/PostUserRecord.tsx';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import PostRecordProcessor from '../../PostUserRecordProcessor.ts';
+import PostRecordProcessor from '../../Processors/PostUserRecordProcessor.ts';
 
 it('Should be on the dom', () => {
   render(<PostRecord />);

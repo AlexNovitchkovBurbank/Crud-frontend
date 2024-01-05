@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PostRecordProcessor from "../PostUserRecordProcessor";
+import PostRecordProcessor from "../Processors/PostUserRecordProcessor";
 
 function PostRecord(): JSX.Element {
   const [name, setName] = useState("");
