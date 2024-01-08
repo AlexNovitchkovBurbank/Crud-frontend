@@ -23,12 +23,11 @@ it("Should process successfully", () => {
     name: name,
   };
 
-  getByUserIdSenderMock.mockImplementation(() => Promise.resolve(jsonObject));
-  getByUserIdMapperFromJsonObjectToRecordMock.mockImplementation(() => record);
-  getByUserIdPresenterMock.mockImplementation(() => recordInOneLine);
+  getByUserIdSenderMock.mockResolvedValue(jsonObject); // mockResolvedValue Used with async calls
+  getByUserIdMapperFromJsonObjectToRecordMock.mockReturnValue(record); // mockReturnedValue Used with normal calls
+  getByUserIdPresenterMock.mockReturnValue(recordInOneLine);
 
-  const result = GetByUserIdProcessor.Process(id);
-
+  GetByUserIdProcessor.Process(id).then((result) => {
     expect(getByUserIdSenderMock).toHaveBeenCalledWith(id);
     expect(getByUserIdMapperFromJsonObjectToRecordMock).toHaveBeenCalledWith(
       jsonObject
@@ -42,4 +41,5 @@ it("Should process successfully", () => {
     expect(getByUserIdPresenterMock).toHaveBeenCalledTimes(1);
 
     expect(result).toBe(recordInOneLine);
+  });
 });
