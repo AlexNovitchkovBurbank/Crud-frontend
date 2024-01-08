@@ -1,11 +1,32 @@
-import Record from "../DataModels/Record"
+import Record from "../DataModels/Record";
 
 const GetByUserIdMapper = {
-    Map(id: string, name: string): Record {
-        const record = new Record(id, name);
+  MapJsonStringToJsonObject(jsonString: string): object {
+    const jsonObject = JSON.parse(jsonString);
 
-        return record;
+    return jsonObject;
+  },
+
+  MapJsonObjectToRecord(jsonObject: object): Record {
+    let id;
+    let name;
+
+    if (!("id" in jsonObject)) {
+      throw new Error("No id provided");
+    } else {
+      id = String(jsonObject["id"]);
     }
-}
+
+    if (!("name" in jsonObject)) {
+      throw new Error("No name provided");
+    } else {
+      name = String(jsonObject["name"]);
+    }
+
+    const record = new Record(id, name);
+
+    return record;
+  },
+};
 
 export default GetByUserIdMapper;

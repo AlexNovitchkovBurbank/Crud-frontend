@@ -1,9 +1,14 @@
-const GetByUserIdSender = {
-    Send(id: string): [string, string] {
-        let name = "Alex";
+import axios from "axios";
 
-        return [id, name];
-    }
-}
+const GetByUserIdSender = {
+  async Send(id: string) {
+    const axiosResponse = await axios
+      .get(
+        `http://localhost:5020/ByIdRecordGetter/GetByUserId?userIdGuid=${id.toString()}`
+      );
+
+      return axiosResponse.data.value;
+  },
+};
 
 export default GetByUserIdSender;

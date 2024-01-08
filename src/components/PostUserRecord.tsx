@@ -8,7 +8,8 @@ function PostRecord(): JSX.Element {
   function handleSubmit(event: any) {
     event.preventDefault();
 
-    setResult(PostRecordProcessor.Process(name));
+    const response = PostRecordProcessor.Process(name);
+    setResult(response);
   }
 
   const handleChange = (event: any) => {

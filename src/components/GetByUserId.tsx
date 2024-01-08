@@ -5,10 +5,10 @@ function GetById(): JSX.Element {
   const [id, setId] = useState("");
   const [result, setResult] = useState("");
 
-  function handleSubmit(event: any) {
+  async function handleSubmit(event: any) {
     event.preventDefault();
 
-    setResult(GetByUserIdProcessor.Process(id));
+    setResult(await GetByUserIdProcessor.Process(id));
   }
 
   const handleChange = (event: any) => {
