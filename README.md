@@ -1,2 +1,2 @@
 # getPostUserRecordFrontend
-MVCPractice is the backend for this project
+Frontend for the project MVCPractice, https://github.com/AlexNovitchkovBurbank/MVCPractice
