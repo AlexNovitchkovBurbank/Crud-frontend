@@ -35,19 +35,10 @@ it("Should process successfully", () => {
     name: name,
   };
 
-<<<<<<< HEAD
   getByUserIdValidatorMock.mockReturnValue(errorObject);
   getByUserIdSenderMock.mockResolvedValue(jsonObject); // mockResolvedValue Used with async calls
   getByUserIdMapperFromJsonObjectToRecordMock.mockReturnValue(record); // mockReturnedValue Used with normal calls
   getByUserIdPresenterMock.mockReturnValue(recordInOneLine);
-
-  GetByUserIdProcessor.Process(id).then((result) => {
-    expect(getByUserIdValidatorMock).toHaveBeenCalledWith(id);
-=======
-  getByUserIdSenderMock.mockResolvedValue(jsonObject); // mockResolvedValue Used with async calls
-  getByUserIdMapperFromJsonObjectToRecordMock.mockReturnValue(record); // mockReturnedValue Used with normal calls
-  getByUserIdPresenterMock.mockReturnValue(recordInOneLine);
->>>>>>> b83369f15161b394bf907a9f410e5675066a954c
 
   GetByUserIdProcessor.Process(id).then((result) => {
     expect(getByUserIdSenderMock).toHaveBeenCalledWith(id);
@@ -85,3 +76,4 @@ it("id is not a guid", () => {
 
     expect(result).toBe("id is not a guid");
   });
+});

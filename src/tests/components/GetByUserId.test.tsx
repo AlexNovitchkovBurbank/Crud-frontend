@@ -47,7 +47,6 @@ it("Should be on the dom", () => {
   expect(getByIdButtonElement).toHaveClass("btn btn-primary");
 });
 
-<<<<<<< HEAD
 it("Submit button clicked", async () => {
   const processIdMock = jest.spyOn(GetByUserIdProcessor, "Process");
   processIdMock.mockResolvedValue("1");
@@ -66,23 +65,5 @@ it("Submit button clicked", async () => {
 
     // Inspect the mock calls
     console.log(processIdMock.mock.calls);
-=======
-describe("Should wait for submit button to give back response", () => {
-  it("Submit button clicked", async () => {
-    const processIdMock = jest.spyOn(GetByUserIdProcessor, "Process");
-    processIdMock.mockResolvedValue("1");
-    render(<GetById />);
-
-    fireEvent.click(screen.getByTestId("GetByIdButton"));
-
-    await waitFor(() => { // Wait for is used to wait for an async inside the react component
-      const getByIdResponseElement = screen.getByTestId("GetByIdResponse");
-      expect(getByIdResponseElement).toBeInTheDocument();
-
-      expect(getByIdResponseElement).toHaveTextContent("1");
-
-      expect(processIdMock).toHaveBeenCalledTimes(1);
-    });
->>>>>>> b83369f15161b394bf907a9f410e5675066a954c
   });
 });
