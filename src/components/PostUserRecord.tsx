@@ -5,10 +5,10 @@ function PostRecord(): JSX.Element {
   const [name, setName] = useState("");
   const [result, setResult] = useState("");
 
-  function handleSubmit(event: any) {
+  async function handleSubmit(event: any) {
     event.preventDefault();
 
-    const response = PostRecordProcessor.Process(name);
+    const response = await PostRecordProcessor.Process(name);
     setResult(response);
   }
 

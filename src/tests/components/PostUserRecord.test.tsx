@@ -1,20 +1,34 @@
-import PostRecord from '../../components/PostUserRecord.tsx';
-import { fireEvent, render, screen, within } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import PostRecordProcessor from '../../Processors/PostUserRecordProcessor.ts';
+import PostRecord from "../../components/PostUserRecord.tsx";
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
+import "@testing-library/jest-dom";
+import PostRecordProcessor from "../../Processors/PostUserRecordProcessor.ts";
 
-it('Should be on the dom', () => {
+it("Should be on the dom", () => {
   render(<PostRecord />);
-  
-  const postRecordHeaderElement = screen.getByTestId('PostRecordTitle');
-  const postRecordFlexboxElement = screen.getByTestId('PostRecordFlexbox');
 
-  const postRecordLabelElement = within(postRecordFlexboxElement).getByTestId('PostRecordLabel');
-  const postRecordInputElement = within(postRecordFlexboxElement).getByTestId('PostRecordInput');
-  const postRecordButtonElement = within(postRecordFlexboxElement).getByTestId('PostRecordButton');
+  const postRecordHeaderElement = screen.getByTestId("PostRecordTitle");
+  const postRecordFlexboxElement = screen.getByTestId("PostRecordFlexbox");
+
+  const postRecordLabelElement = within(postRecordFlexboxElement).getByTestId(
+    "PostRecordLabel"
+  );
+  const postRecordInputElement = within(postRecordFlexboxElement).getByTestId(
+    "PostRecordInput"
+  );
+  const postRecordButtonElement = within(postRecordFlexboxElement).getByTestId(
+    "PostRecordButton"
+  );
 
   expect(postRecordFlexboxElement).toBeInTheDocument();
-  expect(postRecordFlexboxElement).toHaveClass("d-flex flex-row justify-content-center");
+  expect(postRecordFlexboxElement).toHaveClass(
+    "d-flex flex-row justify-content-center"
+  );
 
   expect(postRecordHeaderElement).toBeInTheDocument();
   expect(postRecordHeaderElement).toHaveTextContent("Post record");
@@ -32,16 +46,23 @@ it('Should be on the dom', () => {
   expect(postRecordButtonElement).toHaveClass("btn btn-primary");
 });
 
-it('Submit button clicked', () => {
-  const processPostRecordMock = jest.spyOn(PostRecordProcessor, 'Process');
-  processPostRecordMock.mockImplementation(() => "Successfully saved!");
+describe("Should wait for submit button to give back response", () => {
+  it("Submit button clicked", async () => {
+    const processPostRecordMock = jest.spyOn(PostRecordProcessor, "Process");
+    processPostRecordMock.mockResolvedValue("Successfully saved!");
 
-  render(<PostRecord />);
+    render(<PostRecord />);
 
-  fireEvent.click(screen.getByTestId('PostRecordButton'));
+    fireEvent.click(screen.getByTestId("PostRecordButton"));
 
-  const postRecordResponseElement = screen.getByTestId('PostRecordResponse');
-  expect(postRecordResponseElement).toBeInTheDocument();
+    await waitFor(() => {
+      const postRecordResponseElement =
+        screen.getByTestId("PostRecordResponse");
+      expect(postRecordResponseElement).toBeInTheDocument();
 
-  expect(postRecordResponseElement).toHaveTextContent('Successfully saved!');
+      expect(postRecordResponseElement).toHaveTextContent(
+        "Successfully saved!"
+      );
+    });
+  });
 });
